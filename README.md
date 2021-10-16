@@ -1,4 +1,4 @@
-# Mars Rover Coding Challenge
+# Mars Rover
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
@@ -23,5 +23,5 @@ This project was initialised by using the following command to
 create a skeleton React / Typescript app that uses Snowpack for it's development server:
 
 ```bash
-npm init snowpack-app interview-mars-rover  --template @snowpack/app-template-react-typescript
+npm init snowpack-app mars-rover  --template @snowpack/app-template-react-typescript
 ```
