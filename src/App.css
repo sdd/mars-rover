@@ -1,18 +1,96 @@
 .App {
     text-align: center;
-}
-
-.App p {
-    margin: 0.4rem;
-}
-
-.App-header {
-    background-color: #282c34;
+    background-color: #451804;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #c1440e;
+    height: 10vh;
+    margin: 0;
+}
+
+h1 {
+    color: #f0e7e7;
+    font-family: sans-serif;
+    height: 100%;
+    line-height: 10vh;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+h2 {
+    color: #f0e7e7;
+    font-family: sans-serif;
+    margin: 0.4rem 0 0.3rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: 'left input-output right';
+    height: 500px;
+}
+
+main > div {
+    height: 100%;
+    margin: 1vh 1vw;
+    border-radius: 10px;
+}
+
+.left {
+    grid-area: left;
+}
+
+.input-output {
+    background-color: #e77d11;
+    grid-area: input-output;
+}
+.right {
+    grid-area: right;
+}
+
+textarea {
+    width: calc(100% - 2em);
+    height: 30%;
+    margin: 1em;
+    border: none;
+    border-radius: 5px;
+}
+
+.input-status {
+    color: #f0e7e7;
+    font-family: sans-serif;
+}
+
+button {
+    margin-left: 1rem;
+    border: 2px solid #fda600;
+    background-color: #c1440e;
+    border-radius: 3px;
+    padding: 4px 10px;
+    color: #f0e7e7;
+    font-weight: bold;
+}
+
+button:hover {
+    border: 3px solid #fda600;
+    padding: 3px 9px;
+    cursor: ;
+}
+
+button:disabled {
+    background-color: gray;
+}
+
+button:hover:disabled {
+    border: 2px solid #fda600;
+    padding: 4px 10px;
+    cursor: not-allowed;
 }
