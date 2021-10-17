@@ -16,6 +16,11 @@ export enum GameInputParseError {
 // from problem definition - max permitted coord val in both axes
 export const MAX_COORD_VAL = 50;
 
+/**
+ * parses a full input string containing grid dimensions and robot instructions
+ * @param rawInput the input string to parse
+ * @returns A result containing either the successfully parsed GameInput or an error
+ */
 export function parseInput(rawInput: string): Result<GameInput, GameInputParseError> {
     // split input into lines, filtering out any empty ones
     const [gridConfigRaw, ...robotStateRaw] = rawInput.split('\n').filter(notEmpty);
@@ -73,6 +78,12 @@ export function parseGridConfig(str: string): Result<GridConfig, GameInputParseE
     return Ok({ width, height });
 }
 
+/**
+ * Parses strings representing the two lines for an indivisual robot's piece of the input teSxt
+ * @param rawInitialState a string containing the robot initial pos and direction
+ * @param rawInstructions a string containing the list of instructions for this bot
+ * @returns a Result containing a RobotDescriptor if the parse succeeded, or an error
+ */
 export function parseRobotInput(
     rawInitialState: string,
     rawInstructions: string,
