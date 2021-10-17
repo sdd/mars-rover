@@ -52,6 +52,13 @@ const MAP_MOVE_Y = {
     [Direction.W]: 0,
 };
 
+/**
+ * Processes a run for a single bot
+ * @param gridConfig the dimensions of the world grid
+ * @param scentedLocations a list of places where previous bots have died
+ * @param robotDescriptor the initial state and set of insructions to process
+ * @returns
+ */
 export function executeRobotInstructions(
     gridConfig: GridConfig,
     scentedLocations: ScentedLocations,
@@ -71,12 +78,13 @@ export function executeRobotInstructions(
                 break;
 
             case Instruction.F:
+                // determine the coords that the bot is trying to move forward into
                 const newX = currentState.x + MAP_MOVE_X[currentState.dir];
                 const newY = currentState.y + MAP_MOVE_Y[currentState.dir];
 
                 // check if the bot is trying to move off the grid
                 if (newX < 0 || newX > gridConfig.width || newY < 0 || newY > gridConfig.height) {
-                    // check to see if the current square is not scented.
+                    // check to see if the current square is not scented
                     if (
                         scentedLocations.find(loc => loc.x === currentState.x && loc.y === currentState.y) === undefined
                     ) {
@@ -84,6 +92,7 @@ export function executeRobotInstructions(
                         currentState.isLost = true;
                     }
                 } else {
+                    // move was to a valid square - make it happen
                     currentState.x = newX;
                     currentState.y = newY;
                 }
@@ -105,7 +114,8 @@ export function executeRobotInstructions(
 }
 
 /**
- *
+ * takes a fully parsed game input and runs all the robot instructions
+ * in sequence, scenting any locations where robots die as we go
  * @param gameInput
  * @returns the final fate of all the robots
  */

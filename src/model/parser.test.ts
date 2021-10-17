@@ -61,4 +61,27 @@ LLFFFLWLFL`; // ERROR is on the "LLFFFLWLFL" line, W is an invalid instruction
         expect(result.ok).to.be.false;
         expect(result.val).to.eq(GameInputParseError.ROBOT_INSTRUCTIONS);
     });
+
+    it('handles empty robot instructions', () => {
+        const input = `5 3
+`; // ERROR is on the "LLFFFLWLFL" line, W is an invalid instruction
+
+        const result = parseInput(input);
+
+        expect(result.ok).to.be.true;
+    });
+
+    it('returns an error if there is an unparsable instruction for a robot', () => {
+        const input = `5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W`; // ERROR missing instructions line for last robot
+
+        const result = parseInput(input);
+
+        expect(result.ok).to.be.false;
+        expect(result.val).to.eq(GameInputParseError.ROBOT_INSTRUCTIONS);
+    });
 });

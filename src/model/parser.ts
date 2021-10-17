@@ -24,11 +24,15 @@ export function parseInput(rawInput: string): Result<GameInput, GameInputParseEr
 
     // split the raw lines of robot input into two-line
     // chunks (1 chunk per robot)
-    const perRobotRawState: string[][] = chunk(robotStateRaw, 2);
+    const perRobotRawState: string[][] = chunk(robotStateRaw || [], 2);
 
     // map each chunk through the parser to get a list of Results
     const robotRequestResults = perRobotRawState.map(([initialState, instructions]) =>
-        parseRobotInput(initialState, instructions),
+        // if this is the last chunk and there was an odd number of lines
+        // in perRobotRawState, we have an invalid input and instructions will be undefined
+        instructions === undefined
+            ? Err(GameInputParseError.ROBOT_INSTRUCTIONS)
+            : parseRobotInput(initialState, instructions),
     );
 
     // Result.all maps from Result<RobotDescriptor, GameInputParseError>[]
