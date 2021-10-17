@@ -82,7 +82,7 @@ export function parseRobotInput(
 
     const dir = parseDirection(dirRaw);
 
-    const initialState = dir.map(dir => ({ x, y, dir }));
+    const initialState = dir.map(dir => ({ x, y, dir, isLost: false }));
     const instructions = Result.all(...rawInstructions.split('').map(parseInstruction));
 
     return Result.all(initialState, instructions).map(([initialState, instructions]) => ({

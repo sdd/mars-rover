@@ -1,3 +1,5 @@
+import type { Option } from 'ts-results';
+
 export type GridConfig = {
     width: number;
     height: number;
@@ -14,12 +16,14 @@ export type RobotState = {
     x: number;
     y: number;
     dir: Direction; // the direction the robot is facing
+    isLost: boolean; // has the robot fell off the edge of the world
 };
 
 export enum Instruction {
     R = 'R', // Turn Right
     L = 'L', // Turn Left
     F = 'F', // Move 1 step in the direction the robot is facing
+    // More instruction types can be added here
 }
 
 /**
@@ -40,4 +44,22 @@ export type RobotDescriptor = {
 export type GameInput = {
     gridConfig: GridConfig;
     robotRequests: RobotDescriptor[];
+};
+
+export type Position = {
+    x: number;
+    y: number;
+};
+
+/**
+ * A list of positions in which a robot has been lost
+ * previously
+ */
+export type ScentedLocations = Position[];
+
+/**
+ * The result of executing the set of instructions for a robot
+ */
+export type RobotRunResult = {
+    finalState: RobotState;
 };

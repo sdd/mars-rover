@@ -24,7 +24,7 @@ RFRFRFRF
 3 2 N
 FRRFLLFFRRFLL
 0 3 A
-LLFFFLFLFL`; // ERROR is on the "0 3 A" line, A is an invalid dir
+LLFFFLFLFL`; // ERROR is on the "5 300" line, 300 is too large a value for a grid
 
         const result = parseInput(input);
 
