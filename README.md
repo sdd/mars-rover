@@ -2,6 +2,8 @@
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
+Once checked out, run `npm install` to install all dependencies.
+
 ## Available Scripts
 
 ### npm start
